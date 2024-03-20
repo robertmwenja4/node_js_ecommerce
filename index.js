@@ -2,8 +2,13 @@ const express = require('express')
 const cors = require('cors');
 const dotenv = require('dotenv');
 const passport = require('passport');
-const User = require('./models/userModel');
-const bcrypt = require('bcryp')
+const User = require('./models/userModel.js');
+const bcrypt = require('bcryptjs')
+const LocalStrategy = require('passport-local').Strategy
+const session = require('express-session')
+const userRouter = require('./routes/userRoute.js')
+const productRouter = require('./routes/productRoute.js')
+const flash = require('connect-flash');
 dotenv.config();
 
 
@@ -17,13 +22,20 @@ var corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+app.use(session({
+    secret: 'your_secret_key',
+    resave: false,
+    saveUninitialized: false
+}));
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(flash());
 
 
 passport.use(new LocalStrategy(
     function(email, password, done){
-        User.findOne({email: email}, (user, err)=>{
+        User.findOne({where:{email: email}}, (user, err)=>{
             if(err){ return done(err); }
             if(!user){
                 return done(null, false, {message: "Incorrect Email"});
@@ -58,13 +70,17 @@ const userExists = async(req, res) =>{
     }
 }
 
-app.post('/login',
-    passport.authenticate('local', {failureRedirect: '/login'}),
-    function(req, res){
-        res.redirect('/');
-    }
-)
 
+
+app.use('/api', userRouter);
+app.use('/api/products', productRouter);
+app.post('/login',
+  passport.authenticate('local'),
+  function(req, res) {
+    // If this function gets called, authentication was successful.
+    // `req.user` contains the authenticated user.
+    res.send(200);
+  });
 //Routes
 const PORT = process.env.APP_PORT;
 app.listen(PORT, ()=>{

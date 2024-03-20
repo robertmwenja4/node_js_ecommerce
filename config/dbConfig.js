@@ -1,8 +1,11 @@
+const dotenv = require('dotenv');
+dotenv.config();
 module.exports = {
-    HOST : process.env.DB_HOST,
-    USER: process.env.DB_USER,
-    PASSWORD: process.env.DB_PASSWORD,
-    DB: process.env.DB_NAME,
+
+    HOST : "localhost",
+    USER: "root",
+    PASSWORD: '',
+    DB: 'node_ecommerce_db',
     dialect: 'mysql',
 
     pool: {

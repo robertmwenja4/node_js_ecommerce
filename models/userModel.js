@@ -1,5 +1,4 @@
-const { DataTypes } = require("sequelize");
-const { sequelize } = require(".");
+
 
 module.exports = (sequelize, DataTypes) => {
     const User = sequelize.define('User',{
@@ -16,6 +15,10 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING
         }
     });
+
+    User.associate = (models) =>{
+
+    }
     
     return User;
 }

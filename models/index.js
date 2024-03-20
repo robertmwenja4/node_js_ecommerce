@@ -1,4 +1,4 @@
-const dbConfig = require('../config/dbConfig')
+const dbConfig = require('../config/dbConfig.js')
 const {Sequelize, DataTypes} = require('sequelize');
 
 
@@ -35,12 +35,13 @@ db.Sequelize = Sequelize
 db.sequelize = sequelize
 
 db.users = require('./userModel.js')(sequelize, DataTypes);
+db.products = require('./productModel.js')(sequelize, DataTypes);
 
 //Sync
 db.sequelize.sync({ force: false})
 .then(()=>{
     console.log('Yes sync Done');
-});
+}).catch(err=>console.log(err))
 
 
 Object.keys(db).forEach(modelName => {
