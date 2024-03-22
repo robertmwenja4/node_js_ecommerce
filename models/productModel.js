@@ -19,6 +19,25 @@ module.exports = (sequelize, DataTypes) =>{
         discount_id: {
             type: DataTypes.INTEGER,
             allowNull: true
+        },
+        material: {
+            type: DataTypes.STRING
+        },
+        size_id: {
+            type: DataTypes.INTEGER,
+            allowNull: true
+        },
+        color_id: {
+            type: DataTypes.INTEGER,
+            allowNull: true
+        },
+        price: {
+            type: DataTypes.DECIMAL(16,4),
+            allowNull: false
+        },
+        brand_id: {
+            type: DataTypes.INTEGER,
+            allowNull: true
         }
     });
 

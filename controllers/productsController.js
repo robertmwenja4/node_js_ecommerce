@@ -11,7 +11,7 @@ const addProduct = async (req, res) =>{
         description: req.body.description,
         discount_id: req.body.discount_id
     }
-    const product = await Product.create(info);
+    const product = await Product.create(req.body);
     res.status(201).send(product);
 }
 
