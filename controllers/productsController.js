@@ -46,7 +46,7 @@ const updateProduct = async (req, res) => {
 //Delete Product
 const deleteProduct = (req, res) => {
     let id = req.params.id;
-    Product.findOne({
+    Product.destroy({
         where: {
             id: id
         }
