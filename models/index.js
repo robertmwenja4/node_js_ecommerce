@@ -37,6 +37,7 @@ db.sequelize = sequelize
 db.users = require('./userModel.js')(sequelize, DataTypes);
 db.products = require('./productModel.js')(sequelize, DataTypes);
 db.orders = require('./orderModel.js')(sequelize, DataTypes);
+db.order_items = require('./orderItemModel.js')(sequelize, DataTypes);
 
 //Sync
 db.sequelize.sync({ force: false})
