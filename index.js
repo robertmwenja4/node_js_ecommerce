@@ -9,6 +9,7 @@ const session = require('express-session')
 const userRouter = require('./routes/userRoute.js')
 const productRouter = require('./routes/productRoute.js')
 const orderRouter = require('./routes/orderRoute.js')
+const discountRouter = require('./routes/discountRoute.js')
 const flash = require('connect-flash');
 dotenv.config();
 
@@ -76,6 +77,7 @@ const userExists = async(req, res) =>{
 app.use('/api', userRouter);
 app.use('/api/products', productRouter);
 app.use('/api/orders', orderRouter);
+app.use('/api/discounts', discountRouter);
 app.post('/login',
   passport.authenticate('local'),
   function(req, res) {
