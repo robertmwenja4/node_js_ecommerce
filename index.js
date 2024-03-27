@@ -12,6 +12,7 @@ const orderRouter = require('./routes/orderRoute.js')
 const discountRouter = require('./routes/discountRoute.js')
 const colorRouter = require('./routes/colorRoute.js')
 const sizeRouter = require('./routes/sizeRoute.js')
+const categoryRouter = require('./routes/categoryRoute.js')
 const flash = require('connect-flash');
 dotenv.config();
 
@@ -82,6 +83,7 @@ app.use('/api/orders', orderRouter);
 app.use('/api/discounts', discountRouter);
 app.use('/api/colors', colorRouter);
 app.use('/api/sizes', sizeRouter);
+app.use('/api/categories', categoryRouter);
 app.post('/login',
   passport.authenticate('local'),
   function(req, res) {

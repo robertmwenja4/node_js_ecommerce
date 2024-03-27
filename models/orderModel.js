@@ -12,6 +12,13 @@ module.exports = (sequelize, DataTypes) => {
         },
         payment_id: {
             type: DataTypes.BIGINT(20).UNSIGNED
+        },
+        status: {
+            type: DataTypes.ENUM,
+            values: [
+                'pending','processing','backordered','onhold','shipped',
+                'delivered','cancelled','returned','refunded','completed'
+            ]
         }
     });
 

@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize, DataTypes) => {
-    const Color = sequelize.define("Size", {
+    const Size = sequelize.define("Size", {
         name: {
             type: DataTypes.STRING,
             allowNull: false

@@ -41,6 +41,7 @@ db.order_items = require('./orderItemModel.js')(sequelize, DataTypes);
 db.discounts = require('./discountModel.js')(sequelize, DataTypes);
 db.colors = require('./colorModel.js')(sequelize, DataTypes);
 db.sizes = require('./sizeModel.js')(sequelize, DataTypes);
+db.categories = require('./productCategoryModel.js')(sequelize, DataTypes);
 
 //Sync
 db.sequelize.sync({ force: false})
