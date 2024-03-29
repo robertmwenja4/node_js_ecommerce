@@ -55,7 +55,20 @@ const deleteDiscount = async(req, res) => {
         message: "Discount Deleted Successfully"
     });
 }
+//Discounts where ctive
+const activeDiscounts = async(req, res) => {
+    try {
+        const discounts = await Discount.findAll({
+            where: {
+                status: 'active'
+            }
+        })
+        res.send(discounts);
+    } catch (error) {
+        console.log(`Error is: ${error}`);
+    }
+}
 
 module.exports = {
-    addDiscount, getAllDiscounts, getOneDiscount, updateDiscount, deleteDiscount
+    addDiscount, getAllDiscounts, getOneDiscount, updateDiscount, deleteDiscount,activeDiscounts
 }
