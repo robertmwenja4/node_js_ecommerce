@@ -15,13 +15,14 @@ const router = createBrowserRouter([
     element: <App/>
   },
   {
+    path: "/products",
+    element: <IndexProduct/>
+  },
+  {
     path: "/products/create",
     element: <CreateProduct/>
   },
-  {
-    path: "/products",
-    element: <IndexProduct />
-  },
+  
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

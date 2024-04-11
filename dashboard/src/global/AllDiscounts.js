@@ -7,8 +7,9 @@ function AllDiscounts({ value, onChange}){
     useEffect(()=>{
         const fetchData = async () => {
             try {
-                const response = await axios.get("http://127.0.0.1:8080/api/discounts/getAllActiveDiscounts");
-                // console.log(response);
+                const BASE_URL = process.env.REACT_APP_APP_URL;
+                // console.log(BASE_URL, process.env);
+                const response = await axios.get(BASE_URL+"/api/discounts/getAllActiveDiscounts");
                 setData(response.data)
             } catch (error) {
                 console.log(`Error is: ${error}`);

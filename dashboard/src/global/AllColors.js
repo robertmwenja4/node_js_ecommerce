@@ -7,7 +7,8 @@ function AllColors({ value, onChange}){
     useEffect(()=>{
         const fetchData = async () => {
             try {
-                const response = await axios.get("http://127.0.0.1:8080/api/colors/getAllColors");
+                const BASE_URL = process.env.REACT_APP_APP_URL;
+                const response = await axios.get(BASE_URL+"/api/colors/getAllColors");
                 // console.log(response);
                 setData(response.data)
             } catch (error) {
