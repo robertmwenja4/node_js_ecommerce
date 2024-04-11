@@ -7,7 +7,8 @@ function AllSizes({ value, onChange}){
     useEffect(()=>{
         const fetchData = async () => {
             try {
-                const response = await axios.get("http://127.0.0.1:8080/api/sizes/getAllSizes");
+                const BASE_URL = process.env.REACT_APP_APP_URL;
+                const response = await axios.get(BASE_URL+"/api/sizes/getAllSizes");
                 // console.log(response);
                 setData(response.data)
             } catch (error) {
